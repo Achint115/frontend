@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from "axios";
+import { Link } from 'react-router-dom';
 
 const RegisterPage = () => {
   const [formData, setFormData] = useState({
@@ -77,6 +78,12 @@ const RegisterPage = () => {
             required
             className="w-full p-2 border rounded"
           />
+          <div className="text-sm text-center">
+            Don't have an account?{" "}
+            <Link to="/" className="text-blue-500 hover:underline">
+              Sign In
+            </Link>
+          </div>
           <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Register</button>
         </form>
       </div>

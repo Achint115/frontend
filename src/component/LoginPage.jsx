@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({
@@ -42,7 +42,7 @@ const navigate=useNavigate()
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
       <div className="w-full max-w-md shadow-xl rounded-2xl p-6 bg-white">
-        <h1 className="text-2xl font-bold text-center mb-4">Register</h1>
+        <h1 className="text-2xl font-bold text-center mb-4">Login</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           
           <input
@@ -63,7 +63,12 @@ const navigate=useNavigate()
             required
             className="w-full p-2 border rounded"
           />
-          
+         <div className="text-sm text-center">
+            Don't have an account?{" "}
+            <Link to="/register" className="text-blue-500 hover:underline">
+              Sign Up
+            </Link>
+          </div>
           <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Register</button>
         </form>
       </div>
