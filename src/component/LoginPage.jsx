@@ -25,7 +25,7 @@ const navigate=useNavigate()
         return alert("All Fields required")
       }
 
-      const response = await axios.post("http://localhost:2020/api/auth/login", formData);
+      const response = await axios.post("https://crud-backend-y21o.onrender.com/api/auth/login", formData);
       setMessage(response.data);
      await localStorage.setItem("token", response.data.token);
     

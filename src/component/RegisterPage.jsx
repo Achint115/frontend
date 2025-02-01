@@ -23,7 +23,7 @@ const RegisterPage = () => {
         return;
       }
 
-      const response = await axios.post("http://localhost:2020/api/auth/register", formData);
+      const response = await axios.post("https://crud-backend-y21o.onrender.com/api/auth/register", formData);
       setMessage(response.data);
       alert("Registration Successful!");
 
