@@ -5,6 +5,8 @@ const HomePage = () => {
   const location = useLocation();
   const user = location.state?.user; // Safely accessing user data
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [selectedSemester, setSelectedSemester] = useState([]);
+  const [selectedCourse, setSelectedCourse] = useState(null);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -23,8 +25,36 @@ const HomePage = () => {
     };
   }, []);
 
+  // Subjects for each semester
+  const subjects = {
+    'sem-1': [
+      { name: 'C Programming Notes', pdf: 'Problem Set - 4 C.pdf' },
+      { name: 'Data Visualization', pdf: '/path/to/data-visualization.pdf' }
+    ],
+    'sem-2': [
+      { name: 'Algorithms', pdf: '/path/to/algorithms.pdf' },
+      { name: 'Database Management', pdf: '/path/to/database-management.pdf' }
+    ],
+    'sem-3': [
+      { name: 'Machine Learning', pdf: '/path/to/machine-learning.pdf' },
+      { name: 'Cloud Computing', pdf: '/path/to/cloud-computing.pdf' }
+    ]
+  };
+
+  // Handle semester selection
+  const handleSemesterChange = (e, courseIndex) => {
+    const updatedSelection = [...selectedSemester];
+    updatedSelection[courseIndex] = e.target.value;
+    setSelectedSemester(updatedSelection);
+  };
+
+  // Open PDF file in a new tab
+  const handleSubjectSelect = (pdfLink) => {
+    window.open(pdfLink, '_blank');
+  };
+
   return (
-    <> 
+    <>
       <nav className="bg-gradient-to-r from-purple-600 to-blue-500 text-white p-4 flex items-center justify-between md:justify-start md:space-x-8 shadow-lg">
         <button 
           id="sidebar-toggle"
@@ -52,7 +82,6 @@ const HomePage = () => {
               <li><a href="#home" className="hover:underline" onClick={toggleSidebar}>Home</a></li>
               <li><a href="#about" className="hover:underline" onClick={toggleSidebar}>About</a></li>
               <li><a href="#courses" className="hover:underline" onClick={toggleSidebar}>Courses</a></li>
-             
             </ul>
           </div>
         </div>
@@ -81,9 +110,8 @@ const HomePage = () => {
           </section>
 
           {/* Courses Section */}
-          <section id="courses" className="courses-container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4 md:p-8 "  style={{ backgroundImage: "url('board-5599231_1280.png')" }} >
-            {[
-              { title: 'BCA (DS+AI)', image: 'Screenshot_3-2-2025_17553_i.pinimg.com.jpeg' },
+          <section id="courses" className="courses-container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4 md:p-8" style={{ backgroundImage: "url('board-5599231_1280.png')" }}>
+            {[{ title: 'BCA (DS+AI)', image: 'Screenshot_3-2-2025_17553_i.pinimg.com.jpeg' },
               { title: 'BCA', image: 'Screenshot_3-2-2025_17553_i.pinimg.com.jpeg' },
               { title: 'B TECH (DS+AI)', image: 'Screenshot_3-2-2025_17553_i.pinimg.com.jpeg' },
               { title: 'BSc Agriculture', image: 'Screenshot_3-2-2025_17553_i.pinimg.com.jpeg' },
@@ -91,16 +119,35 @@ const HomePage = () => {
               { title: 'Diploma', image: 'Screenshot_3-2-2025_17553_i.pinimg.com.jpeg' },
               { title: 'Polytechnique', image: 'Screenshot_3-2-2025_17553_i.pinimg.com.jpeg' },
               { title: 'MCA', image: 'Screenshot_3-2-2025_17553_i.pinimg.com.jpeg' },
-              { title: 'M TECH', image: 'Screenshot_3-2-2025_17553_i.pinimg.com.jpeg' },
+              { title: 'M TECH', image: 'Screenshot_3-2-2025_17553_i.pinimg.com.jpeg' }
             ].map((course, index) => (
               <div key={index} className="course-card bg-white border p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
                 <img src={course.image} alt={course.title} className="w-full h-40 object-cover mb-4 rounded" />
                 <h2 className="text-xl font-semibold text-gray-800 mb-2">{course.title}</h2>
-                <select className="semester-dropdown p-2 border rounded w-full focus:outline-none focus:ring-2 focus:ring-purple-400">
-                  <option value="sem-1">Semester 1</option>
+
+                {/* Semester Selection */}
+                <select
+                  className="semester-dropdown p-2 border rounded w-full focus:outline-none focus:ring-2 focus:ring-purple-400"
+                  value={selectedSemester[index] || ''}
+                  onChange={(e) => handleSemesterChange(e, index)}
+                >
+                  <option value="">Select Semester</option>
+                  <option value="sem-1">Semester 1 </option>
                   <option value="sem-2">Semester 2</option>
                   <option value="sem-3">Semester 3</option>
                 </select>
+
+                {/* Subject Dropdown */}
+                {selectedSemester[index] && (
+                  <select className="subject-dropdown mt-4 p-2 border rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-400">
+                    <option value="">Select Subject</option>
+                    {subjects[selectedSemester[index]].map((subject, subIndex) => (
+                      <option key={subIndex} value={subject.pdf} onClick={() => handleSubjectSelect(subject.pdf)}>
+                        {subject.name}
+                      </option>
+                    ))}
+                  </select>
+                )}
               </div>
             ))}
           </section>
