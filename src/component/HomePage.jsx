@@ -5,7 +5,7 @@ const HomePage = () => {
   const location = useLocation();
   const user = location.state?.user; // Safely accessing user data
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [selectedSemester, setSelectedSemester] = useState([]);
+  const [selectedSemester, setSelectedSemester] = useState({});
   const [selectedCourse, setSelectedCourse] = useState(null);
 
   const toggleSidebar = () => {
@@ -25,27 +25,12 @@ const HomePage = () => {
     };
   }, []);
 
-  // Subjects for each semester
-  const subjects = {
-    'sem-1': [
-      { name: 'C Programming Notes', pdf: 'Problem Set - 4 C.pdf' },
-      { name: 'Data Visualization', pdf: '/path/to/data-visualization.pdf' }
-    ],
-    'sem-2': [
-      { name: 'Algorithms', pdf: '/path/to/algorithms.pdf' },
-      { name: 'Database Management', pdf: '/path/to/database-management.pdf' }
-    ],
-    'sem-3': [
-      { name: 'Machine Learning', pdf: '/path/to/machine-learning.pdf' },
-      { name: 'Cloud Computing', pdf: '/path/to/cloud-computing.pdf' }
-    ]
-  };
-
   // Handle semester selection
   const handleSemesterChange = (e, courseIndex) => {
-    const updatedSelection = [...selectedSemester];
-    updatedSelection[courseIndex] = e.target.value;
-    setSelectedSemester(updatedSelection);
+    setSelectedSemester(prev => ({
+      ...prev,
+      [courseIndex]: e.target.value,
+    }));
   };
 
   // Open PDF file in a new tab
@@ -56,7 +41,7 @@ const HomePage = () => {
   return (
     <>
       <nav className="bg-gradient-to-r from-purple-600 to-blue-500 text-white p-4 flex items-center justify-between md:justify-start md:space-x-8 shadow-lg">
-        <button 
+        <button
           id="sidebar-toggle"
           className="md:hidden text-2xl"
           onClick={toggleSidebar}
@@ -110,16 +95,16 @@ const HomePage = () => {
           </section>
 
           {/* Courses Section */}
-          <section id="courses" className="courses-container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4 md:p-8" style={{ backgroundImage: "url('board-5599231_1280.png')" }}>
-            {[{ title: 'BCA (DS+AI)', image: 'Screenshot_3-2-2025_17553_i.pinimg.com.jpeg' },
-              { title: 'BCA', image: 'Screenshot_3-2-2025_17553_i.pinimg.com.jpeg' },
-              { title: 'B TECH (DS+AI)', image: 'Screenshot_3-2-2025_17553_i.pinimg.com.jpeg' },
-              { title: 'BSc Agriculture', image: 'Screenshot_3-2-2025_17553_i.pinimg.com.jpeg' },
-              { title: 'B Pharma', image: 'Screenshot_3-2-2025_17553_i.pinimg.com.jpeg' },
-              { title: 'Diploma', image: 'Screenshot_3-2-2025_17553_i.pinimg.com.jpeg' },
-              { title: 'Polytechnique', image: 'Screenshot_3-2-2025_17553_i.pinimg.com.jpeg' },
-              { title: 'MCA', image: 'Screenshot_3-2-2025_17553_i.pinimg.com.jpeg' },
-              { title: 'M TECH', image: 'Screenshot_3-2-2025_17553_i.pinimg.com.jpeg' }
+          <section id="courses" className="courses-container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4 md:p-8">
+            {[{ title: 'BCA (DS+AI)' },
+              { title: 'BCA' },
+              { title: 'B TECH (DS+AI)' },
+              { title: 'BSc Agriculture' },
+              { title: 'B Pharma' },
+              { title: 'Diploma' },
+              { title: 'Polytechnique' },
+              { title: 'MCA'},
+              { title: 'M TECH' }
             ].map((course, index) => (
               <div key={index} className="course-card bg-white border p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
                 <img src={course.image} alt={course.title} className="w-full h-40 object-cover mb-4 rounded" />
@@ -132,21 +117,38 @@ const HomePage = () => {
                   onChange={(e) => handleSemesterChange(e, index)}
                 >
                   <option value="">Select Semester</option>
-                  <option value="sem-1">Semester 1 </option>
+                  <option value="sem-1">Semester 1</option>
                   <option value="sem-2">Semester 2</option>
                   <option value="sem-3">Semester 3</option>
                 </select>
 
-                {/* Subject Dropdown */}
-                {selectedSemester[index] && (
-                  <select className="subject-dropdown mt-4 p-2 border rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-400">
-                    <option value="">Select Subject</option>
-                    {subjects[selectedSemester[index]].map((subject, subIndex) => (
-                      <option key={subIndex} value={subject.pdf} onClick={() => handleSubjectSelect(subject.pdf)}>
-                        {subject.name}
-                      </option>
-                    ))}
-                  </select>
+                {/* Subjects based on selected semester */}
+                {selectedSemester[index] === 'sem-1' && (
+                  <div>
+                    <ul>
+                      <li><a href="https://github.com/Achint115/frontend/blob/bfaa51ca2ae9a5125e0bccba1b6f627a3a2a63be/src/component/Problem%20Set%20-%204%20C.pdf" className="text-blue-500">Structure of C programming language</a>  <a href="https://github.com/Achint115/frontend/blob/main/src/component/Problem%20Set%20-%202%20C.pdf">Structure of C programming language</a> <a href="https://github.com/Achint115/frontend/blob/main/src/component/Problem%20Set%20-%202%20C.pdf">Structure of C programming language </a></li>
+                      <li><a href="/sem-1/subject-2" className="text-blue-500">Subject 2</a></li>
+                      <li><a href="/sem-1/subject-3" className="text-blue-500">Subject 3</a></li>
+                    </ul>
+                  </div>
+                )}
+                {selectedSemester[index] === 'sem-2' && (
+                  <div>
+                    <ul>
+                      <li><a href="/sem-2/subject-1" className="text-blue-500">Subject 1</a></li>
+                      <li><a href="/sem-2/subject-2" className="text-blue-500">Subject 2</a></li>
+                      <li><a href="/sem-2/subject-3" className="text-blue-500">Subject 3</a></li>
+                    </ul>
+                  </div>
+                )}
+                {selectedSemester[index] === 'sem-3' && (
+                  <div>
+                    <ul>
+                      <li><a href="/sem-3/subject-1" className="text-blue-500">Subject 1</a></li>
+                      <li><a href="/sem-3/subject-2" className="text-blue-500">Subject 2</a></li>
+                      <li><a href="/sem-3/subject-3" className="text-blue-500">Subject 3</a></li>
+                    </ul>
+                  </div>
                 )}
               </div>
             ))}
