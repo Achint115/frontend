@@ -118,23 +118,23 @@ const HomePage = () => {
 
                 {selectedSemester[index] === 'sem-1' && (
                   <ul className="mt-4 space-y-2">
-                    <li><a href="https://github.com/Achint115/frontend/blob/bfaa51ca2ae9a5125e0bccba1b6f627a3a2a63be/src/component/Problem%20Set%20-%204%20C.pdf" className="text-teal-600 hover:underline">Structure of C programming language</a></li>
-                    <li><a href="/sem-1/subject-2" className="text-teal-600 hover:underline">Subject 2</a></li>
-                    <li><a href="/sem-1/subject-3" className="text-teal-600 hover:underline">Subject 3</a></li>
+                    <li><a href="https://github.com/Achint115/frontend/blob/bfaa51ca2ae9a5125e0bccba1b6f627a3a2a63be/src/component/Problem%20Set%20-%204%20C.pdf" className="text-teal-600 hover:underline">Structure of C programming language</a> <input type="file" className="ml-4" /></li>
+                    <li><a href="/sem-1/subject-2" className="text-teal-600 hover:underline">Subject 2</a><input type="file" className="ml-4" /></li>
+                    <li><a href="/sem-1/subject-3" className="text-teal-600 hover:underline">Subject 3</a><input type="file" className="ml-4" /></li>
                   </ul>
                 )}
                 {selectedSemester[index] === 'sem-2' && (
                   <ul className="mt-4 space-y-2">
-                    <li><a href="/sem-2/subject-1" className="text-teal-600 hover:underline">Subject 1</a></li>
-                    <li><a href="/sem-2/subject-2" className="text-teal-600 hover:underline">Subject 2</a></li>
-                    <li><a href="/sem-2/subject-3" className="text-teal-600 hover:underline">Subject 3</a></li>
+                    <li><a href="/sem-2/subject-1" className="text-teal-600 hover:underline">Subject 1</a><input type="file" className="ml-4" /></li>
+                    <li><a href="/sem-2/subject-2" className="text-teal-600 hover:underline">Subject 2</a><input type="file" className="ml-4" /></li>
+                    <li><a href="/sem-2/subject-3" className="text-teal-600 hover:underline">Subject 3</a><input type="file" className="ml-4" /></li>
                   </ul>
                 )}
                 {selectedSemester[index] === 'sem-3' && (
                   <ul className="mt-4 space-y-2">
-                    <li><a href="/sem-3/subject-1" className="text-teal-600 hover:underline">Subject 1</a></li>
-                    <li><a href="/sem-3/subject-2" className="text-teal-600 hover:underline">Subject 2</a></li>
-                    <li><a href="/sem-3/subject-3" className="text-teal-600 hover:underline">Subject 3</a></li>
+                    <li><a href="/sem-3/subject-1" className="text-teal-600 hover:underline">Subject 1</a><input type="file" className="ml-4" /></li>
+                    <li><a href="/sem-3/subject-2" className="text-teal-600 hover:underline">Subject 2</a><input type="file" className="ml-4" /></li>
+                    <li><a href="/sem-3/subject-3" className="text-teal-600 hover:underline">Subject 3</a><input type="file" className="ml-4" /></li>
                   </ul>
                 )}
               </div>
