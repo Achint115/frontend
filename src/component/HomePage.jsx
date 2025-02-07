@@ -118,7 +118,7 @@ const HomePage = () => {
                 {selectedSemester[index] === 'sem-1' && (
   <ul className="mt-4 space-y-2">
     <li className="flex items-center justify-between">
-      <a href="https://github.com/Achint115/frontend/blob/bfaa51ca2ae9a5125e0bccba1b6f627a3a2a63be/src/component/Problem%20Set%20-%204%20C.pdf" className="text-teal-600 hover:underline">
+      <a href="https://github.com/Achint115/frontend/blob/main/src/component/Structured%20programming%20using%20C%20IT-1.pdf" className="text-teal-600 hover:underline">
         Structure of C programming language
       </a>
       <label className="bg-blue-500 text-white px-4 py-2 rounded-lg cursor-pointer hover:bg-blue-600">
