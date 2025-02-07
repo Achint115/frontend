@@ -115,28 +115,86 @@ const HomePage = () => {
                   <option value="sem-2">Semester 2</option>
                   <option value="sem-3">Semester 3</option>
                 </select>
-
                 {selectedSemester[index] === 'sem-1' && (
-                  <ul className="mt-4 space-y-2">
-                    <li><a href="https://github.com/Achint115/frontend/blob/bfaa51ca2ae9a5125e0bccba1b6f627a3a2a63be/src/component/Problem%20Set%20-%204%20C.pdf" className="text-teal-600 hover:underline">Structure of C programming language</a> <input type="file" className="ml-4" /></li>
-                    <li><a href="/sem-1/subject-2" className="text-teal-600 hover:underline">Subject 2</a><input type="file" className="ml-4" /></li>
-                    <li><a href="/sem-1/subject-3" className="text-teal-600 hover:underline">Subject 3</a><input type="file" className="ml-4" /></li>
-                  </ul>
-                )}
-                {selectedSemester[index] === 'sem-2' && (
-                  <ul className="mt-4 space-y-2">
-                    <li><a href="/sem-2/subject-1" className="text-teal-600 hover:underline">Subject 1</a><input type="file" className="ml-4" /></li>
-                    <li><a href="/sem-2/subject-2" className="text-teal-600 hover:underline">Subject 2</a><input type="file" className="ml-4" /></li>
-                    <li><a href="/sem-2/subject-3" className="text-teal-600 hover:underline">Subject 3</a><input type="file" className="ml-4" /></li>
-                  </ul>
-                )}
-                {selectedSemester[index] === 'sem-3' && (
-                  <ul className="mt-4 space-y-2">
-                    <li><a href="/sem-3/subject-1" className="text-teal-600 hover:underline">Subject 1</a><input type="file" className="ml-4" /></li>
-                    <li><a href="/sem-3/subject-2" className="text-teal-600 hover:underline">Subject 2</a><input type="file" className="ml-4" /></li>
-                    <li><a href="/sem-3/subject-3" className="text-teal-600 hover:underline">Subject 3</a><input type="file" className="ml-4" /></li>
-                  </ul>
-                )}
+  <ul className="mt-4 space-y-2">
+    <li className="flex items-center justify-between">
+      <a href="https://github.com/Achint115/frontend/blob/bfaa51ca2ae9a5125e0bccba1b6f627a3a2a63be/src/component/Problem%20Set%20-%204%20C.pdf" className="text-teal-600 hover:underline">
+        Structure of C programming language
+      </a>
+      <label className="bg-blue-500 text-white px-4 py-2 rounded-lg cursor-pointer hover:bg-blue-600">
+        Upload
+        <input type="file" className="hidden" />
+      </label>
+    </li>
+    <li className="flex items-center justify-between">
+      <a href="/sem-1/Mathmatic" className="text-teal-600 hover:underline">Mathematic</a>
+      <label className="bg-blue-500 text-white px-4 py-2 rounded-lg cursor-pointer hover:bg-blue-600">
+        Upload
+        <input type="file" className="hidden" />
+      </label>
+    </li>
+    <li className="flex items-center justify-between">
+      <a href="/sem-1/Data Science" className="text-teal-600 hover:underline">Data Science</a>
+      <label className="bg-blue-500 text-white px-4 py-2 rounded-lg cursor-pointer hover:bg-blue-600">
+        Upload
+        <input type="file" className="hidden" />
+      </label>
+    </li>
+  </ul>
+)}
+
+{selectedSemester[index] === 'sem-2' && (
+  <ul className="mt-4 space-y-2">
+    <li className="flex items-center justify-between">
+      <a href="/sem-2/subject-1" className="text-teal-600 hover:underline">Subject 1</a>
+      <label className="bg-blue-500 text-white px-4 py-2 rounded-lg cursor-pointer hover:bg-blue-600">
+        Upload
+        <input type="file" className="hidden" />
+      </label>
+    </li>
+    <li className="flex items-center justify-between">
+      <a href="/sem-2/subject-2" className="text-teal-600 hover:underline">Subject 2</a>
+      <label className="bg-blue-500 text-white px-4 py-2 rounded-lg cursor-pointer hover:bg-blue-600">
+        Upload
+        <input type="file" className="hidden" />
+      </label>
+    </li>
+    <li className="flex items-center justify-between">
+      <a href="/sem-2/subject-3" className="text-teal-600 hover:underline">Subject 3</a>
+      <label className="bg-blue-500 text-white px-4 py-2 rounded-lg cursor-pointer hover:bg-blue-600">
+        Upload
+        <input type="file" className="hidden" />
+      </label>
+    </li>
+  </ul>
+)}
+
+{selectedSemester[index] === 'sem-3' && (
+  <ul className="mt-4 space-y-2">
+    <li className="flex items-center justify-between">
+      <a href="/sem-3/subject-1" className="text-teal-600 hover:underline">Subject 1</a>
+      <label className="bg-blue-500 text-white px-4 py-2 rounded-lg cursor-pointer hover:bg-blue-600">
+        Upload
+        <input type="file" className="hidden" />
+      </label>
+    </li>
+    <li className="flex items-center justify-between">
+      <a href="/sem-3/subject-2" className="text-teal-600 hover:underline">Subject 2</a>
+      <label className="bg-blue-500 text-white px-4 py-2 rounded-lg cursor-pointer hover:bg-blue-600">
+        Upload
+        <input type="file" className="hidden" />
+      </label>
+    </li>
+    <li className="flex items-center justify-between">
+      <a href="/sem-3/subject-3" className="text-teal-600 hover:underline">Subject 3</a>
+      <label className="bg-blue-500 text-white px-4 py-2 rounded-lg cursor-pointer hover:bg-blue-600">
+        Upload
+        <input type="file" className="hidden" />
+      </label>
+    </li>
+  </ul>
+)}
+
               </div>
             )) : (
               <p className="col-span-full text-center text-gray-500">No courses found</p>
