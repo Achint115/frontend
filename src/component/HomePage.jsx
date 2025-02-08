@@ -118,7 +118,7 @@ const HomePage = () => {
                 {selectedSemester[index] === 'sem-1' && (
   <ul className="mt-4 space-y-2">
     <li className="flex items-center justify-between">
-      <a href="https://github.com/Achint115/frontend/blob/main/src/component/Structured%20programming%20using%20C%20IT-1.pdf" className="text-teal-600 hover:underline">
+      <a href="https://github.com/Achint115/frontend/blob/bfaa51ca2ae9a5125e0bccba1b6f627a3a2a63be/src/component/Problem%20Set%20-%204%20C.pdf" className="text-teal-600 hover:underline">
         Structure of C programming language
       </a>
       <label className="bg-blue-500 text-white px-4 py-2 rounded-lg cursor-pointer hover:bg-blue-600">
@@ -201,9 +201,51 @@ const HomePage = () => {
             )}
           </section>
 
-          <footer className="bg-gradient-to-r from-indigo-600 to-teal-500 text-white text-center p-4 rounded-t-lg shadow-lg mt-12">
-            <p>&copy; 2025 Course Website. All rights reserved.</p>
-          </footer>
+          <footer className="bg-gradient-to-r from-indigo-600 to-teal-500 text-white text-center p-6 rounded-t-lg shadow-lg mt-12">
+  <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
+    {/* Quick Links */}
+    <div className="mb-4 md:mb-0">
+      <h3 className="text-lg font-semibold">Quick Links</h3>
+      <ul className="space-y-2 mt-2">
+        <li><a href="#home" className="hover:underline">Home</a></li>
+        <li><a href="#about" className="hover:underline">About</a></li>
+        <li><a href="#courses" className="hover:underline">Courses</a></li>
+        <li><a href="#contact" className="hover:underline">Contact</a></li>
+      </ul>
+    </div>
+
+    {/* Contact Information */}
+    <div className="mb-4 md:mb-0">
+      <h3 className="text-lg font-semibold">Contact Us</h3>
+      <p className="mt-2">Email: support@a3s.com</p>
+      <p>Phone: +1 (123) 456-7890</p>
+    </div>
+
+    {/* Social Media Links */}
+    <div>
+      <h3 className="text-lg font-semibold">Follow Us</h3>
+      <div className="flex space-x-4 mt-2">
+        <a href="#" className="hover:scale-110 transition-transform">
+          <i className="fab fa-facebook text-xl"></i>
+        </a>
+        <a href="#" className="hover:scale-110 transition-transform">
+          <i className="fab fa-twitter text-xl"></i>
+        </a>
+        <a href="#" className="hover:scale-110 transition-transform">
+          <i className="fab fa-linkedin text-xl"></i>
+        </a>
+        <a href="#" className="hover:scale-110 transition-transform">
+          <i className="fab fa-instagram text-xl"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div className="border-t border-gray-300 mt-4 pt-4">
+    <p>&copy; 2025 A3S. All rights reserved.</p>
+  </div>
+</footer>
+
         </div>
       </div>
     </>
